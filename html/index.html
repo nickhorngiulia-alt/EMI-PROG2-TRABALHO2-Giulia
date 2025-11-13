@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agenda de Contatos</title>
+</head>
+<body>
+    <form>
+        Cadastro de Contatos <br>
+        Nome:<input type="text" id="contNome"><br>
+        Número:<input type="text" id="contNumero"><br>
+        Email:<input type="text" id="contEmail"><br>
+        Grupo:<select id="selectGrupo"></select><br>
+        <button id="btnCadastrarContato">Cadastrar</button><br>
+
+        Cadastro de Grupos<br>
+        Nome:<input type="text" id="gruNome"><br>
+        Cor:<select id="gruCor">
+                <option value="🟥">🟥</option>
+                <option value="🟧">🟧</option>
+                <option value="🟨">🟨</option>
+                <option value="🟩">🟩</option>
+                <option value="🟦">🟦</option>
+                <option value="🟪">🟪</option>
+                <option value="🟫">🟫</option>
+                <option value="⬛">⬛</option>
+                <option value="⬜">⬜</option>
+            </select>
+            <br>Descrição:<input type="text" id="gruDescricao"><br>
+            <button id="btnCadastrarGrupo">Cadastrar</button><br>
+    </form>
+    <div id="listas">
+        <ul id="listaContatos"></ul>
+        <ul id="listaGrupos"></ul>
+    </div>
+<script src="../js/script.js"></script>
+<script src="../js/classes.js"></script>
+</body>
+</html>
