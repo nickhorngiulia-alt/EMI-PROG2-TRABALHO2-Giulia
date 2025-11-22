@@ -1,18 +1,3 @@
-class Contato{
-    constructor(nome, numero, email, grupo){
-        this.nome = nome;
-        this.numero = numero;
-        this.email = email;
-        this.grupo = grupo;
-    }
-    toString(){
-       return `${Grupo.cor} ${this.nome} `;
-    }
-    exibirDados(){
-        return `${Grupo.cor} ${nome} ${numero} ${email}`;
-    }
-
-}
 class Grupo{
     constructor(nome, cor, descricao){
         this.nome = nome;
@@ -25,4 +10,20 @@ class Grupo{
     exibirDados(){
         return `${this.cor} ${this.nome} ${this.descricao}`;
     }
+}
+
+class Contato{
+    constructor(nome, numero, email, grupo){
+        this.nome = nome;
+        this.numero = numero;
+        this.email = email;
+        this.grupo = grupo;
+    }
+    toString(){
+       return `${this.grupo.cor} ${this.nome} `;
+    }
+    exibirDados(){
+        return `${this.grupo.cor} ${nome} ${numero} ${email}`;
+    }
+
 }
