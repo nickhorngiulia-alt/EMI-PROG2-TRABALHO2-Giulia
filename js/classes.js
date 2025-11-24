@@ -8,7 +8,9 @@ class Grupo{
         return `${this.cor} ${this.nome}`;
     }
     exibirDados(){
-        return `${this.cor} ${this.nome} ${this.descricao}`;
+        return `       Nome: ${this.nome} \n
+        Cor: ${this.cor} \n
+        Descrição: ${this.descricao}`;
     }
 }
 
@@ -23,7 +25,10 @@ class Contato{
        return `${this.grupo.cor} ${this.nome} `;
     }
     exibirDados(){
-        return `${this.grupo.cor} ${nome} ${numero} ${email}`;
+        return `       Nome: ${this.nome}\n
+       Número: ${this.numero}\n
+       Email: ${this.email}\n
+       Grupo: ${this.grupo.cor} ${this.grupo.nome}\n`;
     }
 
 }

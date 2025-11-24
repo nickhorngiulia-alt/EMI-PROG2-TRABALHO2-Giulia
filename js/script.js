@@ -30,6 +30,10 @@ function carregarGrupos(){
         btnRemover.setAttribute("onclick", `removerGru(${i})`);
         li.appendChild(btnRemover);
         ul.appendChild(li);
+        let btnInfo = document.createElement("button");
+        btnInfo.innerHTML = "Info";
+        btnInfo.setAttribute("onclick", `btnInfoGru(${i})`);
+        li.appendChild(btnInfo);
 
         let grupo = listaGrupos[i];
         let opt = document.createElement("option");
@@ -44,6 +48,9 @@ function removerGru(i){
     localStorage.setItem("listaGrupos", JSON.stringify(listaGrupos));
     carregarGrupos();
 }
+function btnInfoGru(i){
+    alert(listaGrupos[i].exibirDados());
+}
 
 document.querySelector("#btnCadastrarContato").addEventListener("click", cadastrarContato);
 function cadastrarContato(evento){
@@ -51,7 +58,8 @@ evento.preventDefault();
 let contNome = document.querySelector("#contNome").value;
 let contNumero = document.querySelector("#contNumero").value;
 let contEmail = document.querySelector("#contEmail").value;
-let grupo = document.querySelector("#selectGrupo").value;
+let grupoIndex = document.querySelector("#selectGrupo").value;
+let grupo = listaGrupos[grupoIndex];
 let objContato = new Contato (contNome, contNumero, contEmail, grupo);
 listaContatos.push(objContato);
 localStorage.setItem("listaContatos", JSON.stringify(listaContatos));
@@ -69,10 +77,17 @@ function carregarContatos(){
         btnRemover.setAttribute("onclick", `removerCont(${i})`);
         li.appendChild(btnRemover);
         ul.appendChild(li);
-    })
+        let btnInfo = document.createElement("button");
+        btnInfo.innerHTML = "Info";
+        btnInfo.setAttribute("onclick", `btnInfoCont(${i})`);
+        li.appendChild(btnInfo);
+    });
 }
 function removerCont(i){
     listaContatos.splice(i,1);
     localStorage.setItem("listaContatos", JSON.stringify(listaContatos));
     carregarContatos();
+}
+function btnInfoCont(i){
+    alert(listaContatos[i].exibirDados());
 }

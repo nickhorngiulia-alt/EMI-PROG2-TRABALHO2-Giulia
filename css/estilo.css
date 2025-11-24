@@ -1,0 +1,188 @@
+body {
+    background: #1e1e1e;
+    color: #e6e6e6;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+}
+#listas {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.lista-container {
+    margin-bottom: 20px; /* Espaço entre as listas */
+    width: 45%; /* Define a largura das listas */
+}
+
+#listaContatos, #listaGrupos {
+    background: #2b2b2b;
+    padding: 15px;
+    width: 90%;         /* ocupar largura do container */
+    min-height: 600px;   /* aumenta espaço vertical (ajuste se quiser menor) */
+    border-radius: 12px; 
+    overflow-y: auto;
+    margin-top: 10px; /* Adiciona espaço entre o título e a lista */
+}
+
+.titulo-container, .titulo-container2{
+    display: flex; /* Alinha título e botão na mesma linha */
+    align-items: center; /* Alinha verticalmente */
+    margin-bottom: 10px; /* Espaço abaixo do título e botão */
+}
+.titulo-container {
+    gap: 400px; 
+}
+.titulo-container2{
+    gap: 422px;
+}
+
+.titulo-container h3, .titulo-container2 h3 {
+    margin: 0; /* Remove margens padrão */
+    padding: 10px 0; /* Adiciona espaço acima e abaixo */
+}
+
+.titulo-container a, .titulo-container2 a {
+    margin-left: 10px; /* Espaço entre o título e o botão */
+    padding: 6px 10px; /* Estilo do botão */
+    background: #3a3a3a;
+    color: white;
+    border-radius: 6px;
+    text-decoration: none; /* Remove sublinhado */
+}
+
+.titulo-container a:hover, .titulo-container2 a:hover {
+    background: #505050; /* Cor ao passar o mouse */
+}
+
+#addContato, #addGrupos {
+    padding: 6px 10px;
+    font-size: 14px;
+    border-radius: 6px;
+    background: #3a3a3a;
+    display: inline-block;
+    margin-left: 10px;
+}
+
+button, #addContato, #addGrupos {
+    background: #3a3a3a;
+    padding: 8px 14px;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    text-decoration: none;
+    margin-bottom: 10px;
+    display: inline-block;
+}
+
+button:hover, #addContato:hover, #addGrupos:hover {
+    background: #505050;
+}
+
+#listaContatos li, 
+#listaGrupos li {
+    background: #383838;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#listaContatos li button,
+#listaGrupos li button {
+    margin-left: 8px;
+    background: #555;
+}
+
+#listaContatos li button:hover,
+#listaGrupos li button:hover {
+    background: #777;
+}
+
+form {
+    background: #2b2b2b;
+    padding: 20px;
+    border-radius: 12px;
+    width: 90%;
+    margin: auto;
+}
+
+input, select {
+    width: 95%;
+    padding: 10px;
+    margin: 8px 0;
+    background: #1f1f1f;
+    border: 1px solid #444;
+    border-radius: 6px;
+    color: white;
+}
+
+#btnCadastrarContato, 
+#btnCadastrarGrupo {
+    margin-top: 10px;
+    width: 100%;
+}
+
+/* ======== SETA DE VOLTAR ======== */
+#seta {
+    color: #bbb;
+    font-size: 20px;
+    text-decoration: none;
+}
+
+#seta:hover {
+    color: white;
+}
+
+.esconder {
+    display: none;
+}
+
+:root{
+    --gap-container-1: 438px; /* gap para .titulo-container */
+    --gap-container-2: 463px; /* gap para .titulo-container2 */
+}
+
+.titulo-container {
+    display: flex;
+    align-items: center;
+    gap: var(--gap-container-1) !important;
+    margin-bottom: 10px;
+}
+.titulo-container2 {
+    display: flex;
+    align-items: center;
+    gap: var(--gap-container-2) !important;
+    margin-bottom: 10px;
+}
+
+#listas { display:flex; gap:20px; align-items:flex-start; }
+.lista-container { width: 48%; } /* duas colunas lado a lado */
+#listaContatos, #listaGrupos {
+    width: 90% !important;    /* 90% da largura do container */
+    min-height: 600px;
+    background: #2b2b2b;
+    padding: 15px;
+    border-radius: 12px;
+    overflow-y: auto;
+    margin-top: 10px;
+}
+
+.titulo-container a, .titulo-container2 a {
+    margin-left: auto;
+    display: inline-block;
+    white-space: nowrap;
+    flex: 0 0 auto;
+    max-width: 180px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 6px 10px;
+    background: #3a3a3a;
+    color: #fff;
+    border-radius: 6px;
+    text-decoration: none;
+}

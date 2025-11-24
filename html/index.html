@@ -4,37 +4,73 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Agenda de Contatos</title>
+    <link rel="stylesheet" href="../css/estilo.css"> 
 </head>
 <body>
-    <form>
-        Cadastro de Contatos <br>
+    <div id="listas">
+        <!-- Contatos -->
+        <div class="lista-container">
+            <div class="titulo-container">
+                <h3>Contatos</h3>
+                <a href="#formContatos" id="addContato">Adicionar Contato</a>
+            </div>
+            <div id="filtroGrupos"></div>
+            <ul id="listaContatos"></ul>
+        </div>
+
+        <!-- Grupos -->
+        <div class="lista-container">
+            <div class="titulo-container2">
+                <h3>Grupos</h3>
+                <a href="#formGrupos" id="addGrupos">Adicionar Grupo</a>
+            </div>
+            <ul id="listaGrupos"></ul>
+        </div>
+    </div>
+
+    <!-- Formulário de contatos -->
+    <div style="margin-top: 1000px;"></div>
+    <form id="formContatos">
+        <a href="#listas" id="seta"><-</a>
+        <h3>Adicionar Contatos</h3>
         Nome:<input type="text" id="contNome"><br>
         Número:<input type="text" id="contNumero"><br>
         Email:<input type="text" id="contEmail"><br>
         Grupo:<select id="selectGrupo"></select><br>
-        <button id="btnCadastrarContato">Cadastrar</button><br>
+        <button id="btnCadastrarContato" type="button">Cadastrar</button><br>
+    </form>
 
-        Cadastro de Grupos<br>
+    <!-- Formulário de grupos -->
+    <div style="margin-top: 1000px;"></div>
+    <form id="formGrupos">
+        <a href="#listas" id="seta"><-</a>
+        <h3>Cadastro de Grupos</h3>
         Nome:<input type="text" id="gruNome"><br>
         Cor:<select id="gruCor">
-                <option value="🟥">🟥</option>
-                <option value="🟧">🟧</option>
-                <option value="🟨">🟨</option>
-                <option value="🟩">🟩</option>
-                <option value="🟦">🟦</option>
-                <option value="🟪">🟪</option>
-                <option value="🟫">🟫</option>
-                <option value="⬛">⬛</option>
-                <option value="⬜">⬜</option>
-            </select>
-            <br>Descrição:<input type="text" id="gruDescricao"><br>
-            <button id="btnCadastrarGrupo">Cadastrar</button><br>
+            <option value="🟥">🟥</option>
+            <option value="🟧">🟧</option>
+            <option value="🟨">🟨</option>
+            <option value="🟩">🟩</option>
+            <option value="🟦">🟦</option>
+            <option value="🟪">🟪</option>
+            <option value="🟫">🟫</option>
+            <option value="⬛">⬛</option>
+            <option value="⬜">⬜</option>
+        </select><br>
+        Descrição:<input type="text" id="gruDescricao"><br>
+        <button id="btnCadastrarGrupo" type="button">Cadastrar</button><br>
     </form>
-    <div id="listas">
-        <ul id="listaContatos"></ul>
-        <ul id="listaGrupos"></ul>
+
+    <!-- Modal -->
+    <div style="margin-top: 1000px;"></div>
+    <div id="modal" class="esconder">
+        <div id="modal-content">
+            <span id="modal-fechar">&times;</span>
+            <div id="modal-texto"></div>
+        </div>
     </div>
-<script src="../js/classes.js"></script>
-<script src="../js/script.js"></script>
+
+    <script src="../js/classes.js"></script>
+    <script src="../js/script.js"></script>
 </body>
 </html>
