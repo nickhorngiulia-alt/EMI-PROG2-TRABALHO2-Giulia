@@ -2,6 +2,7 @@ var listaGrupos = JSON.parse(localStorage.getItem("listaGrupos")) || [];
 var listaContatos = JSON.parse(localStorage.getItem("listaContatos")) || [];
 listaGrupos = listaGrupos.map(g => new Grupo(g.nome, g.cor, g.descricao));
 listaContatos = listaContatos.map(c => new Contato(c.nome, c.numero, c.email, g => new Grupo(g.nome, c.g.cor, g.descricao)));
+contadores();
 carregarGrupos();
 carregarContatos();
 
@@ -14,8 +15,10 @@ let gruDescricao = document.querySelector("#gruDescricao").value
 let objGrupo = new Grupo (gruNome, gruCor, gruDescricao);
 listaGrupos.push(objGrupo);
 localStorage.setItem("listaGrupos", JSON.stringify(listaGrupos));
+contadores();
 carregarGrupos();
 limparGrupos();
+location.hash = "#listas";
 
 };
 
@@ -48,6 +51,7 @@ function carregarGrupos(){
 function removerGru(i){
     listaGrupos.splice(i,1);
     localStorage.setItem("listaGrupos", JSON.stringify(listaGrupos));
+    contadores();
     carregarGrupos();
 }
 function btnInfoGru(i){
@@ -65,8 +69,10 @@ let grupo = listaGrupos[grupoIndex];
 let objContato = new Contato (contNome, contNumero, contEmail, grupo);
 listaContatos.push(objContato);
 localStorage.setItem("listaContatos", JSON.stringify(listaContatos));
+contadores();
 carregarContatos();
 limparContatos();
+location.hash = "#listas";
 };
 
 function carregarContatos(){
@@ -89,6 +95,7 @@ function carregarContatos(){
 function removerCont(i){
     listaContatos.splice(i,1);
     localStorage.setItem("listaContatos", JSON.stringify(listaContatos));
+    contadores();
     carregarContatos();
 }
 function btnInfoCont(i){
@@ -103,4 +110,12 @@ function limparContatos(){
     document.querySelector("#contNome").value = "";
     document.querySelector("#contNumero").value = "";
     document.querySelector("#contEmail").value = "";
+}
+var contadorCont;
+var contadorGru;
+function contadores(){
+    contadorCont = listaContatos.length;
+    contadorGru = listaGrupos.length;
+    document.querySelector("#contadorCont").innerHTML = `Contatos (${contadorCont})`;
+    document.querySelector("#contadorGru").innerHTML = `Grupos (${contadorGru})`;
 }

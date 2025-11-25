@@ -11,7 +11,7 @@
         <!-- Contatos -->
         <div class="lista-container">
             <div class="titulo-container">
-                <h3>Contatos</h3>
+                <h3 id = "contadorCont">Contatos</h3>
                 <a href="#formContatos" id="addContato">Adicionar Contato</a>
             </div>
             <div id="filtroGrupos"></div>
@@ -21,7 +21,7 @@
         <!-- Grupos -->
         <div class="lista-container">
             <div class="titulo-container2">
-                <h3>Grupos</h3>
+                <h3 id="contadorGru">Grupos</h3>
                 <a href="#formGrupos" id="addGrupos">Adicionar Grupo</a>
             </div>
             <ul id="listaGrupos"></ul>
@@ -60,15 +60,6 @@
         Descrição:<input type="text" id="gruDescricao"><br>
         <button id="btnCadastrarGrupo" type="button">Cadastrar</button><br>
     </form>
-
-    <!-- Modal -->
-    <div style="margin-top: 1000px;"></div>
-    <div id="modal" class="esconder">
-        <div id="modal-content">
-            <span id="modal-fechar">&times;</span>
-            <div id="modal-texto"></div>
-        </div>
-    </div>
 
     <script src="../js/classes.js"></script>
     <script src="../js/script.js"></script>
