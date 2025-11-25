@@ -1,7 +1,7 @@
 var listaGrupos = JSON.parse(localStorage.getItem("listaGrupos")) || [];
 var listaContatos = JSON.parse(localStorage.getItem("listaContatos")) || [];
 listaGrupos = listaGrupos.map(g => new Grupo(g.nome, g.cor, g.descricao));
-listaContatos = listaContatos.map(c => new Contato(c.nome, c.numero, c.email, c.grupo));
+listaContatos = listaContatos.map(c => new Contato(c.nome, c.numero, c.email, g => new Grupo(g.nome, c.g.cor, g.descricao)));
 carregarGrupos();
 carregarContatos();
 
@@ -15,6 +15,8 @@ let objGrupo = new Grupo (gruNome, gruCor, gruDescricao);
 listaGrupos.push(objGrupo);
 localStorage.setItem("listaGrupos", JSON.stringify(listaGrupos));
 carregarGrupos();
+limparGrupos();
+
 };
 
 function carregarGrupos(){
@@ -64,6 +66,7 @@ let objContato = new Contato (contNome, contNumero, contEmail, grupo);
 listaContatos.push(objContato);
 localStorage.setItem("listaContatos", JSON.stringify(listaContatos));
 carregarContatos();
+limparContatos();
 };
 
 function carregarContatos(){
@@ -90,4 +93,14 @@ function removerCont(i){
 }
 function btnInfoCont(i){
     alert(listaContatos[i].exibirDados());
+}
+//limpar campos
+function limparGrupos(){
+    document.querySelector("#gruNome").value = "";
+    document.querySelector("#gruDescricao").value = "";
+}
+function limparContatos(){
+    document.querySelector("#contNome").value = "";
+    document.querySelector("#contNumero").value = "";
+    document.querySelector("#contEmail").value = "";
 }
