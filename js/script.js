@@ -31,12 +31,12 @@ function carregarGrupos(){
         let li = document.createElement("li");
         li.innerHTML = listaGrupos[i].toString();
         let btnRemover = document.createElement("button");
-        btnRemover.innerHTML = "Remover";
+        btnRemover.title = "Remover";
         btnRemover.setAttribute("onclick", `removerGru(${i})`);
         li.appendChild(btnRemover);
         ul.appendChild(li);
         let btnInfo = document.createElement("button");
-        btnInfo.innerHTML = "Info";
+        btnInfo.title = "Informações"
         btnInfo.setAttribute("onclick", `btnInfoGru(${i})`);
         li.appendChild(btnInfo);
 
@@ -82,12 +82,12 @@ function carregarContatos(){
         let li = document.createElement("li");
         li.innerHTML = listaContatos[i].toString();
         let btnRemover = document.createElement("button");
-        btnRemover.innerHTML = "Remover";
+        btnRemover.title = "Remover";
         btnRemover.setAttribute("onclick", `removerCont(${i})`);
         li.appendChild(btnRemover);
         ul.appendChild(li);
         let btnInfo = document.createElement("button");
-        btnInfo.innerHTML = "Info";
+        btnInfo.title = "Informações";
         btnInfo.setAttribute("onclick", `btnInfoCont(${i})`);
         li.appendChild(btnInfo);
     });

@@ -132,7 +132,7 @@ button:hover,
 /* ======== SETA VOLTAR ======== */
 #seta {
     color: #bbb;
-    font-size: 20px;
+    font-size: 30px;
     text-decoration: none;
 }
 
@@ -151,4 +151,29 @@ button:hover,
 #listaContatos li button,
 #listaGrupos li button {
     margin-left: 8px; /* espacinho entre Remover e Info */
+}
+/* BOTÃO REMOVER (primeiro botão do li) */
+#listaContatos li button:first-of-type,
+#listaGrupos li button:first-of-type {
+    background-image: url("../files/lixeira.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 18px;
+    color: transparent;  /* esconde o texto */
+    width: 32px;
+    height: 32px;
+    padding: 0;
+}
+
+/* BOTÃO INFO (segundo botão do li) */
+#listaContatos li button:last-of-type,
+#listaGrupos li button:last-of-type {
+    background-image: url("../files/informacao.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 18px;
+    color: transparent; 
+    width: 32px;
+    height: 32px;
+    padding: 0;
 }
