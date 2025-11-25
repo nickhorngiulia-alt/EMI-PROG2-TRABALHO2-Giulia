@@ -5,83 +5,64 @@ body {
     margin: 0;
     padding: 20px;
 }
+
+/* ======== ÁREA DAS DUAS LISTAS ======== */
 #listas {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between; /* fica simétrico sempre */
+    align-items: flex-start;
+    width: 100%;
     gap: 20px;
 }
 
 .lista-container {
-    margin-bottom: 20px; /* Espaço entre as listas */
-    width: 45%; /* Define a largura das listas */
+    width: 48%;        /* duas colunas perfeitas */
 }
 
-#listaContatos, #listaGrupos {
+/* ======== LISTAS ======== */
+#listaContatos,
+#listaGrupos {
     background: #2b2b2b;
     padding: 15px;
-    width: 90%;         /* ocupar largura do container */
-    min-height: 600px;   /* aumenta espaço vertical (ajuste se quiser menor) */
-    border-radius: 12px; 
+    width: 97%;
+    min-height: 600px;
+    border-radius: 12px;
     overflow-y: auto;
-    margin-top: 10px; /* Adiciona espaço entre o título e a lista */
+    margin-top: 10px;
 }
 
-.titulo-container, .titulo-container2{
-    display: flex; /* Alinha título e botão na mesma linha */
-    align-items: center; /* Alinha verticalmente */
-    margin-bottom: 10px; /* Espaço abaixo do título e botão */
-}
-.titulo-container {
-    gap: 400px; 
-}
-.titulo-container2{
-    gap: 422px;
-}
-
-.titulo-container h3, .titulo-container2 h3 {
-    margin: 0; /* Remove margens padrão */
-    padding: 10px 0; /* Adiciona espaço acima e abaixo */
-}
-
-.titulo-container a, .titulo-container2 a {
-    margin-left: 10px; /* Espaço entre o título e o botão */
-    padding: 6px 10px; /* Estilo do botão */
-    background: #3a3a3a;
-    color: white;
-    border-radius: 6px;
-    text-decoration: none; /* Remove sublinhado */
-}
-
-.titulo-container a:hover, .titulo-container2 a:hover {
-    background: #505050; /* Cor ao passar o mouse */
-}
-
-#addContato, #addGrupos {
-    padding: 6px 10px;
-    font-size: 14px;
-    border-radius: 6px;
-    background: #3a3a3a;
-    display: inline-block;
-    margin-left: 10px;
-}
-
-button, #addContato, #addGrupos {
-    background: #3a3a3a;
-    padding: 8px 14px;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    text-decoration: none;
+/* ======== TÍTULO + BOTÃO ======== */
+.titulo-container,
+.titulo-container2 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;   /* AGORA FICA PERFEITO SEM GAPS MANUAIS */
     margin-bottom: 10px;
-    display: inline-block;
 }
 
-button:hover, #addContato:hover, #addGrupos:hover {
+.titulo-container h3,
+.titulo-container2 h3 {
+    margin: 0;
+    padding: 10px 0;
+}
+
+.titulo-container a,
+.titulo-container2 a {
+    padding: 6px 10px;
+    background: #3a3a3a;
+    color: white;
+    border-radius: 6px;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.titulo-container a:hover,
+.titulo-container2 a:hover {
     background: #505050;
 }
 
-#listaContatos li, 
+/* ======== LISTA DE ITENS ======== */
+#listaContatos li,
 #listaGrupos li {
     background: #383838;
     padding: 10px;
@@ -103,6 +84,7 @@ button:hover, #addContato:hover, #addGrupos:hover {
     background: #777;
 }
 
+/* ======== FORMULÁRIO ======== */
 form {
     background: #2b2b2b;
     padding: 20px;
@@ -121,13 +103,33 @@ input, select {
     color: white;
 }
 
-#btnCadastrarContato, 
+#btnCadastrarContato,
 #btnCadastrarGrupo {
     margin-top: 10px;
     width: 100%;
 }
 
-/* ======== SETA DE VOLTAR ======== */
+/* ======== BOTÕES GERAIS ======== */
+button,
+#addContato,
+#addGrupos {
+    background: #3a3a3a;
+    padding: 8px 14px;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    text-decoration: none;
+    margin-bottom: 10px;
+}
+
+button:hover,
+#addContato:hover,
+#addGrupos:hover {
+    background: #505050;
+}
+
+/* ======== SETA VOLTAR ======== */
 #seta {
     color: #bbb;
     font-size: 20px;
@@ -141,48 +143,12 @@ input, select {
 .esconder {
     display: none;
 }
-
-:root{
-    --gap-container-1: 438px; /* gap para .titulo-container */
-    --gap-container-2: 463px; /* gap para .titulo-container2 */
+#listaContatos li button:first-of-type,
+#listaGrupos li button:first-of-type {
+    margin-left: auto; /* empurra o primeiro botão pra direita */
 }
 
-.titulo-container {
-    display: flex;
-    align-items: center;
-    gap: var(--gap-container-1) !important;
-    margin-bottom: 10px;
-}
-.titulo-container2 {
-    display: flex;
-    align-items: center;
-    gap: var(--gap-container-2) !important;
-    margin-bottom: 10px;
-}
-
-#listas { display:flex; gap:20px; align-items:flex-start; }
-.lista-container { width: 48%; } /* duas colunas lado a lado */
-#listaContatos, #listaGrupos {
-    width: 90% !important;    /* 90% da largura do container */
-    min-height: 600px;
-    background: #2b2b2b;
-    padding: 15px;
-    border-radius: 12px;
-    overflow-y: auto;
-    margin-top: 10px;
-}
-
-.titulo-container a, .titulo-container2 a {
-    margin-left: auto;
-    display: inline-block;
-    white-space: nowrap;
-    flex: 0 0 auto;
-    max-width: 180px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    padding: 6px 10px;
-    background: #3a3a3a;
-    color: #fff;
-    border-radius: 6px;
-    text-decoration: none;
+#listaContatos li button,
+#listaGrupos li button {
+    margin-left: 8px; /* espacinho entre Remover e Info */
 }
