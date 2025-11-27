@@ -1,11 +1,19 @@
+//Carrega dados salvos no localStorage e reconstrói as grupo/contato e também o vetor, se não tem = []
 var listaGrupos = JSON.parse(localStorage.getItem("listaGrupos")) || [];
 var listaContatos = JSON.parse(localStorage.getItem("listaContatos")) || [];
 listaGrupos = listaGrupos.map(g => new Grupo(g.nome, g.cor, g.descricao));
-listaContatos = listaContatos.map(c => new Contato(c.nome, c.numero, c.email, g => new Grupo(g.nome, c.g.cor, g.descricao)));
+listaContatos = listaContatos.map(c => {
+    //Caso o contato não esteja em um Grupo
+    if (c.grupo === "-") {
+        return new Contato(c.nome, c.numero, c.email, "-");
+    } else {
+        return new Contato(c.nome, c.numero, c.email, new Grupo(g.nome, g.cor, g.descricao));
+  }});
 contadores();
 carregarGrupos();
 carregarContatos();
 
+//Grupo - Cadastra os valores do grupo pelo clique no botão
 document.querySelector("#btnCadastrarGrupo").addEventListener("click", cadastrarGrupo);
 function cadastrarGrupo(evento){
 evento.preventDefault();
@@ -21,20 +29,28 @@ limparGrupos();
 location.hash = "#listas";
 
 };
-
+// Grupo - Monta a lista e o select, criando também a opção nula e os botões
 function carregarGrupos(){
     const ul = document.querySelector("#listaGrupos");
     const select = document.querySelector("#selectGrupo");
     ul.innerHTML = "";
     select.innerHTML = "";
+
+    let optNulo = document.createElement("option");
+    optNulo.value = "-";
+    optNulo.innerHTML = "-";
+    select.appendChild(optNulo);
+    
     listaGrupos.forEach(function(cada, i){
         let li = document.createElement("li");
         li.innerHTML = listaGrupos[i].toString();
+
         let btnRemover = document.createElement("button");
         btnRemover.title = "Remover";
         btnRemover.setAttribute("onclick", `removerGru(${i})`);
         li.appendChild(btnRemover);
         ul.appendChild(li);
+
         let btnInfo = document.createElement("button");
         btnInfo.title = "Informações"
         btnInfo.setAttribute("onclick", `btnInfoGru(${i})`);
@@ -47,17 +63,19 @@ function carregarGrupos(){
         select.appendChild(opt);
     })
 }
-
+//Grupo - Função do botão remover
 function removerGru(i){
     listaGrupos.splice(i,1);
     localStorage.setItem("listaGrupos", JSON.stringify(listaGrupos));
     contadores();
     carregarGrupos();
 }
+//Grupo - Função do botão Info
 function btnInfoGru(i){
     alert(listaGrupos[i].exibirDados());
 }
 
+//Contatos - Cadastra os valores do grupo pelo clique no botão, verifica a possibilidade do grupo ser nulo
 document.querySelector("#btnCadastrarContato").addEventListener("click", cadastrarContato);
 function cadastrarContato(evento){
 evento.preventDefault();
@@ -65,7 +83,12 @@ let contNome = document.querySelector("#contNome").value;
 let contNumero = document.querySelector("#contNumero").value;
 let contEmail = document.querySelector("#contEmail").value;
 let grupoIndex = document.querySelector("#selectGrupo").value;
-let grupo = listaGrupos[grupoIndex];
+let grupo;
+if (grupoIndex === "-") {
+    grupo = "-";
+} else {
+    grupo = listaGrupos[grupoIndex];
+}
 let objContato = new Contato (contNome, contNumero, contEmail, grupo);
 listaContatos.push(objContato);
 localStorage.setItem("listaContatos", JSON.stringify(listaContatos));
@@ -74,30 +97,34 @@ carregarContatos();
 limparContatos();
 location.hash = "#listas";
 };
-
+// Contatos - Monta a lista e cria os botões
 function carregarContatos(){
     const ul = document.querySelector("#listaContatos");
     ul.innerHTML = "";
     listaContatos.forEach(function(cada, i){
         let li = document.createElement("li");
         li.innerHTML = listaContatos[i].toString();
+
         let btnRemover = document.createElement("button");
         btnRemover.title = "Remover";
         btnRemover.setAttribute("onclick", `removerCont(${i})`);
         li.appendChild(btnRemover);
         ul.appendChild(li);
+
         let btnInfo = document.createElement("button");
         btnInfo.title = "Informações";
         btnInfo.setAttribute("onclick", `btnInfoCont(${i})`);
         li.appendChild(btnInfo);
     });
 }
+// Contatos - Função do Botão remover
 function removerCont(i){
     listaContatos.splice(i,1);
     localStorage.setItem("listaContatos", JSON.stringify(listaContatos));
     contadores();
     carregarContatos();
 }
+// Contatos - Função do botão info
 function btnInfoCont(i){
     alert(listaContatos[i].exibirDados());
 }
@@ -110,7 +137,9 @@ function limparContatos(){
     document.querySelector("#contNome").value = "";
     document.querySelector("#contNumero").value = "";
     document.querySelector("#contEmail").value = "";
+    document.querySelector("#selectGrupo").value = "-";
 }
+// Contador
 var contadorCont;
 var contadorGru;
 function contadores(){

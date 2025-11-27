@@ -19,16 +19,28 @@ class Contato{
         this.nome = nome;
         this.numero = numero;
         this.email = email;
-        this.grupo = grupo;
+        this.grupo = grupo || "-";
     }
     toString(){
-       return `${this.grupo.cor} ${this.nome} `;
+        if (this.grupo !== "-") {
+            return `${this.grupo.cor} ${this.nome} `
+        } else {
+            return `${this.nome} `
+        };
     }
     exibirDados(){
-        return `       Nome: ${this.nome}\n
-       Número: ${this.numero}\n
-       Email: ${this.email}\n
-       Grupo: ${this.grupo.cor} ${this.grupo.nome}\n`;
+        if (this.grupo !== "-"){
+            return `
+            Nome: ${this.nome}\n
+            Número: ${this.numero}\n
+            Email: ${this.email}\n
+            Grupo: ${this.grupo.cor} ${this.grupo.nome}\n`;
+        } else {
+            return `
+            Nome: ${this.nome}\n
+            Número: ${this.numero}\n
+            Email: ${this.email}\n`
+        }
     }
 
 }
