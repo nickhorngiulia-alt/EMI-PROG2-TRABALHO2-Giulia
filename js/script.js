@@ -7,7 +7,7 @@ listaContatos = listaContatos.map(c => {
     if (c.grupo === "-") {
         return new Contato(c.nome, c.numero, c.email, "-");
     } else {
-        return new Contato(c.nome, c.numero, c.email, new Grupo(g.nome, g.cor, g.descricao));
+        return new Contato(c.nome, c.numero, c.email, new Grupo(c.grupo.nome, c.grupo.cor, c.grupo.descricao));
   }});
 contadores();
 carregarGrupos();
